@@ -1,0 +1,37 @@
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Employee ID</th>
+        <th scope="col">Employee Name</th>
+        <th scope="col">Project Name</th>
+        <th scope="col">Employee Rating</th>
+        <th scope="col">Employee Comment</th>
+        <th scope="col">Manager Rating</th>
+        <th scope="col">Manager Comment</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of allFeedbacks">
+        <th>{{project.empId}}</th>
+        <th>{{project.empName}}</th>
+        <th>{{project.project}}</th>
+        <th>
+            <i class="fa" 
+            [ngClass]="{'fa-star-o': count > project.projectRating , 'fa-star': count <= project.projectRating }"
+            *ngFor="let count of [1,2,3,4,5]" aria-hidden="true"> </i>
+        </th>
+        <th>{{project.comment}}</th>
+        <th>
+          <i class="fa" 
+          [ngClass]="{'fa-star-o': count > project.mgrRating , 'fa-star': count <= project.mgrRating }"
+          *ngFor="let count of [1,2,3,4,5]" aria-hidden="true"> </i>
+        </th>
+        <th>{{project.mgrComment}}</th>
+        <th>
+            <a (click)="deleteFeedback()"><i class="fa fa-trash" aria-hidden="true"></i></a>/
+            <a [routerLink]="['/manager-home/edit', project.empId, project.project]"><i class="fa fa-edit" aria-hidden="true"></i></a>
+        </th>
+      </tr>
+    </tbody>
+  </table>

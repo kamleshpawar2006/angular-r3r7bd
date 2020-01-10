@@ -1,0 +1,16 @@
+<app-menu-bar></app-menu-bar>
+<div class="container outline">
+    <div class="row border-bottom">
+        <div class="col-md-1">Welcome</div>
+        <div class="col-md-2">{{user.name}}</div>
+        <div class="col-md-2">Employee</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"><a href="javascript:void(0);" routerLink="new" routerLinkActive="active">New Feedback</a></div>
+        <div class="col-md-2"><a href="javascript:void(0);" routerLink="list" routerLinkActive="active">List</a></div>
+    </div>
+
+    <router-outlet></router-outlet>
+
+</div>

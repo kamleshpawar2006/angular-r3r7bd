@@ -1,0 +1,39 @@
+<form #f="ngForm" (ngSubmit)="f.form.valid && login()">
+    <div class="container">
+        <div class="col-md-12">Welcome</div>    
+        <div class="col-md-4">
+            <div class="col-md-12">
+                <input required 
+                #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }"
+                class="form-control" name="name" placeholder="User Name" [(ngModel)]="user.name"/>
+            </div>
+            <div class="col-md-12">
+                <input required
+                #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+                class="form-control" name="password" placeholder="Password" [(ngModel)]="user.password"/>
+            </div>
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </div>
+
+        <table style="width:100%">
+            <tr>
+              <th>User name</th>
+              <th>password</th>
+              <th>user type</th>
+            </tr>
+            <tr>
+              <td>kamlesh</td>
+              <td>kamlesh</td>
+              <td>Employee</td>
+            </tr>
+            <tr>
+              <td>mayur</td>
+              <td>mayur</td>
+              <td>Manager</td>
+            </tr>
+          </table>
+
+    </div>
+</form>

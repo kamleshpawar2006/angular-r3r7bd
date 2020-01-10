@@ -1,0 +1,84 @@
+<form (ngSubmit)="f.form.valid && save()" #f="ngForm">
+    <div class="container" >
+        <div class="row padding-tb">
+            <div class="col-md-2">
+                Employee Name
+            </div>
+            <div class="col-md-4">
+                <input disabled
+                #empName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && empName.invalid }"
+                name="empName" class="form-control" [(ngModel)]="feedback.empName" required/>
+            </div>
+        </div>
+
+        <div class="row padding-tb">
+            <div class="col-md-2">
+                Employee ID
+            </div>
+            <div class="col-md-4">
+                <input disabled
+                #empId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && empId.invalid }"
+                type="number" name="empId" class="form-control" [(ngModel)]="feedback.empId" required/>
+            </div>
+        </div>
+
+        <div class="row padding-tb">
+            <div class="col-md-2">
+                Project
+            </div>
+            <div class="col-md-4">
+                <input disabled
+                #empName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && empName.invalid }"
+                name="empName" class="form-control" [(ngModel)]="feedback.project"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">Employee Rating</div>
+            <div class="col-md-4">
+                <i class="fa" 
+                [ngClass]="{'fa-star-o': count > feedback.projectRating , 'fa-star': count <= feedback.projectRating }"
+                *ngFor="let count of [1,2,3,4,5]" (click)="feedback.projectRating = count" aria-hidden="true"> </i>
+            </div>
+        </div>
+
+        <div class="row padding-tb">
+            <div class="col-md-2">
+                Employee Comment
+            </div>
+            <div class="col-md-4">
+                <textarea disabled class="form-control" name="comment" [(ngModel)]="feedback.comment">
+                </textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">Your Rating</div>
+            <div class="col-md-4">
+                <i class="fa" 
+                [ngClass]="{'fa-star-o': count > feedback.mgrRating , 'fa-star': count <= feedback.mgrRating }"
+                *ngFor="let count of [1,2,3,4,5]" (click)="feedback.mgrRating = count" aria-hidden="true"> </i>
+                <a class="padding-left" href="javascript:void(0)" (click)="feedback.mgrRating = 0">Remove rating</a>
+            </div>
+        </div>
+
+        <div class="row padding-tb">
+            <div class="col-md-2">
+                Manager Comment
+            </div>
+            <div class="col-md-4">
+                <textarea 
+                #mgrComment="ngModel" [ngClass]="{ 'is-invalid': f.submitted && mgrComment.invalid }"
+                required name="mgrComment" class="form-control" [(ngModel)]="feedback.mgrComment"></textarea>
+            </div>
+        </div>
+
+        <div class="row padding-tb">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+
+</form>
