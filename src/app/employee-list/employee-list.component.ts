@@ -18,8 +18,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   deleteFeedback(empId, project) {
-    var r = confirm("Are you sure you want to delete");
-    if (r == true) {
+    if (confirm("Are you sure you want to delete") == true) {
       this._commonService.deleteSpecificFeedback(empId, project)
     }
   }

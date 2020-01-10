@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table" >
     <thead class="thead-dark">
       <tr>
         <th scope="col">Project Name</th>
@@ -9,7 +9,10 @@
         <th scope="col">Action</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="allFeedbacks == null">
+      No Feedbacks
+    </tbody>
+    <tbody *ngIf="allFeedbacks">
       <tr *ngFor="let project of allFeedbacks">
         <th>{{project.project}}</th>
         <th>

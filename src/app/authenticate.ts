@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { CommonService } from './common.service';
 
-@Injectable()
-class AuthenticateLogin implements CanActivate {
-    constructor(private _commonService: CommonService) {}
-
+@Injectable({
+    providedIn: 'root'
+})
+export class AuthenticateLogin implements CanActivate {
+    constructor(private _commonService: CommonService, private router: Router) {}
     canActivate() {
-        let islogged = this._commonService.getUser();
-        if(islogged){
+        if(this._commonService.getUser()){
             return true;
         }else{
             return false;

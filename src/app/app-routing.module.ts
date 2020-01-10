@@ -9,39 +9,29 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { ManagerListComponent } from './manager-list/manager-list.component';
 import { EditEmployeeFeedbackComponent } from './edit-employee-feedback/edit-employee-feedback.component';
 import { EditManagerFeedbackComponent } from './edit-manager-feedback/edit-manager-feedback.component';
+import { AuthenticateLogin } from './authenticate';
 
 
 const routes: Routes = [
+  {
+    path: 'employee-home', component: EmployeeHomeComponent, canActivate: [AuthenticateLogin], 
+    children: [
+        { path: 'edit/:empId/:project', component: EditEmployeeFeedbackComponent },
+        { path: 'list', component: EmployeeListComponent },
+        { path: 'new', component: EmployeeFeedbackComponent },
+        { path: '', redirectTo: 'list', pathMatch: 'full' },
+    ]
+  },
+  {
+    path: 'manager-home', component: ManagerHomeComponent, canActivate: [AuthenticateLogin],
+    children: [
+        { path: 'edit/:empId/:project', component: EditManagerFeedbackComponent },
+        { path: 'list', component: ManagerListComponent },
+        { path: '', redirectTo: 'list', pathMatch: 'full' }
+    ]
+  },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'employee-home', component: EmployeeHomeComponent, children: [
-    {
-      path: 'list', component: EmployeeListComponent,
-      // canActivate: [AuthenticateLogin]
-    },
-    {
-      path: 'new', component: EmployeeFeedbackComponent
-    },
-    {
-      path: 'edit/:empId/:project', component: EditEmployeeFeedbackComponent
-    },
-    {
-      path: '', redirectTo: 'list', pathMatch: 'full'
-    },
-    ]
-  },
-  { path: 'manager-home', component: ManagerHomeComponent, children: [
-    {
-      path: 'edit/:empId/:project', component: EditManagerFeedbackComponent
-    },
-    {
-      path: 'list', component: ManagerListComponent
-    },
-    {
-      path: '', redirectTo: 'list', pathMatch: 'full'
-    }
-    ]
-  },
   { path: '', redirectTo: '/home', pathMatch: "full"}
 ];
 

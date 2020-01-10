@@ -11,9 +11,7 @@ export class EditManagerFeedbackComponent implements OnInit {
 
   feedback = null;
   projects = [];
-  constructor(private _commonService: CommonService, private router: Router, private route: ActivatedRoute) {
-
-  }
+  constructor(private _commonService: CommonService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.projects = this._commonService.projects;

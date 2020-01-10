@@ -16,7 +16,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { EditEmployeeFeedbackComponent } from './edit-employee-feedback/edit-employee-feedback.component';
 import { EditManagerFeedbackComponent } from './edit-manager-feedback/edit-manager-feedback.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
-// import { AuthenticateLogin } from './authenticate';
+import { AuthenticateLogin } from './authenticate';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
     FormsModule,
     AngularFontAwesomeModule
   ],
-  providers: [CommonService],
+  providers: [CommonService, AuthenticateLogin],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
