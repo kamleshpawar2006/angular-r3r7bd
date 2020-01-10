@@ -19,11 +19,15 @@
         </th>
         <th>{{project.comment}}</th>
         <th>
-          <i class="fa" 
+          <span *ngIf="project.mgrRating != '' && project.mgrRating != null"><i class="fa" 
             [ngClass]="{'fa-star-o': count > project.mgrRating , 'fa-star': count <= project.mgrRating }"
-            *ngFor="let count of [1,2,3,4,5]" aria-hidden="true"> </i>
+            *ngFor="let count of [1,2,3,4,5]" aria-hidden="true"> </i></span>
+            <span *ngIf="project.mgrRating == '' || project.mgrRating != null">NA</span>
         </th>
-        <th>{{project.mgrComment}}</th>
+        <th>
+          <span *ngIf="project.mgrComment != '' && project.mgrComment != null">{{project.mgrComment}}</span>
+          <span *ngIf="project.mgrComment == '' || project.mgrComment != null">NA</span>
+        </th>
         <th>
             <a class="icon-link" href="javascript:void(0)" (click)="deleteFeedback(project.empId, project.project)"><i class="fa fa-trash" aria-hidden="true"></i></a>/
             <a class="icon-link" [routerLink]="['/employee-home/edit', project.empId, project.project]"><i class="fa fa-edit" aria-hidden="true"></i></a>
