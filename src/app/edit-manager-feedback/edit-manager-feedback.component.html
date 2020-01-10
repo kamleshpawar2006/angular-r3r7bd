@@ -38,7 +38,7 @@
             <div class="col-md-4">
                 <i class="fa" 
                 [ngClass]="{'fa-star-o': count > feedback.projectRating , 'fa-star': count <= feedback.projectRating }"
-                *ngFor="let count of [1,2,3,4,5]" (click)="feedback.projectRating = count" aria-hidden="true"> </i>
+                *ngFor="let count of [1,2,3,4,5]" aria-hidden="true"> </i>
             </div>
         </div>
 
